@@ -12,6 +12,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
+  gem 'rspec-rails', '~>3.8.0'
 end
 
 group :development do
@@ -19,6 +20,9 @@ group :development do
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
   gem 'web-console',           '3.5.1'
+  gem 'spring-commands-rspec'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
 end
 
 group :test do
