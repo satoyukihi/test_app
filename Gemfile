@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap', '~>4.1.1'
 gem 'coffee-rails', '4.2.2'
 gem 'jbuilder',     '2.7.0'
 gem 'jquery-rails', '4.3.1'
@@ -9,12 +10,11 @@ gem 'rails',        '5.1.6'
 gem 'sass-rails',   '5.0.6'
 gem 'turbolinks',   '5.0.1'
 gem 'uglifier',     '3.2.0'
-gem 'bootstrap', '~>4.1.1'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
-  gem 'rspec-rails', '~>3.8.0'
   gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'rspec-rails', '~>3.8.0'
 end
 
 group :development do
@@ -28,8 +28,8 @@ group :development do
 end
 
 group :test do
-  gem 'guard', '2.13.0'
   gem 'capybara', '~> 2.15.4'
+  gem 'guard', '2.13.0'
   gem 'webdrivers'
 end
 
