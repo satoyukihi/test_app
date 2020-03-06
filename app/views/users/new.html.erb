@@ -1,12 +1,13 @@
 <% provide(:title,"signup") %>
 
   <h1 class="signuptitle">ユーザー登録</h1>
+  <p><%= link_to "トップページへ戻る", root_url, class:"btn" %></p>
   
   <%= form_with model: @user, local: true do |f| %>
 　<%= render 'shared/error_messages', object: f.object %>
 
   <div class = 'form-group'>
-      <%= f.label :name, "ユーザー名" %>
+      <%= f.label :name, "ニックネーム" %>
       <%= f.text_field :name, class: 'form-control' %>
   </div>
   
@@ -22,5 +23,7 @@
       <%= f.label :"password_confirmation","パスワード(確認)"  %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
-      <%= f.submit "作成", class: "btn btn-primary" %>
+  <div class="signupbtn">
+      <%= f.submit "ユーザーを作成", class: "btn btn-primary" %>
     <% end %>
+  </div>
