@@ -3,6 +3,9 @@
   <h1 class="signuptitle">ユーザー登録</h1>
   <p><%= link_to "トップページへ戻る", root_url, class:"btn" %></p>
   
+  
+  <div class="row">
+  <div class="col-md-6 offset-md-3">
   <%= form_with model: @user, local: true do |f| %>
 　<%= render 'shared/error_messages', object: f.object %>
 
@@ -24,6 +27,8 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
   <div class="signupbtn">
-      <%= f.submit "ユーザーを作成", class: "btn btn-primary" %>
+      <%= f.submit "ユーザー作成", class: "btn btn-primary" %>
     <% end %>
+  </div>
+  </div>
   </div>

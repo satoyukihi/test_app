@@ -1,0 +1,25 @@
+<% provide(:title,"login") %>
+
+<h1 class="logintitle">ログイン</h1>
+<p><%= link_to "トップページへ戻る", root_url, class:"btn" %></p>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_with scope: :session, model:@user, url:login_path, local: true do |f| %>
+
+  <div class = 'form-group'>
+      <%= f.label :email, "e-mail" %>
+      <%= f.email_field :email, value: "foo@bar.com", class: 'form-control' , id:'email'%>
+  </div>
+  <div class = 'form-group'>
+      <%= f.label :パスワード %>
+      <%= f.password_field :password, value: "16535655", class: 'form-control',id: 'password' %>
+  </div>
+      
+      
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <% end %>
+    
+    <p> <%= link_to "ユーザー新規作成", signup_path %></p>
+    </div>
+  </div>

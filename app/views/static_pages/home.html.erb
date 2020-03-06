@@ -2,7 +2,14 @@
 
   <div class="home-title">
     <h1>なんでも掲示板</h1>
-    <P>好きな事をみんなで話そう</P>
-    <p>スレッド立てる、コメントするには<%= link_to "新規ユーザー登録", new_user_path, class:"btn" %></p>
   </div>
-  
+    <P>好きな事をみんなで話そう</P>
+    <% if logged_in? %>
+      <p>スレッドを立てたり、コメントしたりしよう</p>
+      
+    <% else %>   
+    <p>スレッド立てる、コメントするには<br>
+    <%= link_to "新規ユーザー登録", signup_path %> or
+    <%= link_to "ログイン", login_path %></p>
+    <% end %>
+    
