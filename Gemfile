@@ -28,6 +28,8 @@ end
 
 group :test do
   gem 'guard', '2.13.0'
+  gem 'capybara', '~> 2.15.4'
+  gem 'webdrivers'
 end
 
 group :production do
