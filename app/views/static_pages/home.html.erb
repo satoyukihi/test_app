@@ -3,6 +3,7 @@
   <div class="home-title">
     <h1>なんでも掲示板</h1>
   </div>
+  <div class="home-info">
     <P>好きな事をみんなで話そう</P>
     <% if logged_in? %>
       <p>スレッドを立てたり、コメントしたりしよう</p>
@@ -12,4 +13,6 @@
     <%= link_to "新規ユーザー登録", signup_path %> or
     <%= link_to "ログイン", login_path %></p>
     <% end %>
-    
+  </div>
+  
+  <%= render partial: 'static_pages/topic_form', locals: { topic: @topic } %>

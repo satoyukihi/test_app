@@ -1,0 +1,15 @@
+<form class="form-inline">
+  <div class="form-group mb-2">
+    <%= form_with scope: :topic, model:topic,url: {controller: 'topics', action: 'create' },\
+        local: true do |f| %>
+
+    <div class = 'form-group'>
+      <%= f.text_field :text,\
+      class: 'form-control' ,size: "50", id:'title',\
+      placeholder: "スレッドを作成するにはタイトルを入力してください"%>
+    </div>
+
+      <%= f.submit "作成", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</form>
