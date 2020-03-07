@@ -12,7 +12,7 @@
     <% topics.each do |topic| %>
       <tr>
         <td><%= topic.id %></td>
-        <td><%= link_to "#{topic.title}",topic %></td>
+        <td><%= link_to "#{topic.title}""(#{topic.comments.count})",topic %></td>
         <td><%= topic.user.name %></td>
         <td><%= topic.created_at.to_s(:published_on) %></td>
         <% if current_user?(topic.user)%>

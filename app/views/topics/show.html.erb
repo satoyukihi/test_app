@@ -7,7 +7,33 @@
 <p class="infomesion">他人を傷つけるような発言や
 スレット以外の話はしないでください</p>
 
-<div class="comment">
+
+  <% @comments.each do |comment| %>
+  <div class="commentbox">
+        <p class="commentname">
+        <%= comment.id %>.  
+        投稿者: <%= comment.user.name %>
+        投稿時間: <%= comment.created_at.to_s(:published_on) %>
+        </p>
+        <p class="commentcontent">
+          <%= comment.content %>
+        </p>
+        <% if current_user?(comment.user)%>
+        
+        <%= link_to '削除', topic_comment_path(@topic, comment), class: 'commentdelete', method: :delete %>
+      <% end %>
+     </div>   
+    <% end %>
   
   
-</div>
+  <%= form_with model: [@topic, @comment], local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    
+    <div class = 'form-group'>
+      <%= f.text_area :content, class: 'form-control',　id:'content', size: "30x5",\
+         placeholder: "コメントを記入してください" %>
+    </div>
+   
+    <%= f.submit "コメントする", class: "btn btn-primary" %>
+<% end %>
+  

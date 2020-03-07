@@ -15,8 +15,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @comment = Comment.new
-    #@comments = Comment.
+    @comment = Comment.new(topic_id: @topic.id)
+    @comments = Comment.where(topic_id: @topic.id)
   end
 
   def destroy
@@ -29,10 +29,5 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title)
-  end
-
-  def correct_user
-    @topic = current_user.topics.find_by(id: params[:id])
-    redirect_to root_url if @topic.nil?
   end
 end
