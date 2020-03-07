@@ -14,26 +14,30 @@ RSpec.describe 'Users', type: :system do
       
       it "ゲストユーザーはTopicを作成できないこと" do
         expect do
-          fill_in 'topic', with: 'なんでも'
+          fill_in 'title', with: 'なんでも'
           click_button '作成'
           expect(page).to have_content 'ログインしてください'
-        end.to_not change(topic, :count)
+          expect(current_path).to eq login_path
+        end.to_not change(Topic, :count)
+      end
+      
+      it "無効な値でTopicを作成できないこと" do
+        expect do
+          sign_in_as user
+          fill_in 'title', with: ''
+          click_button '作成'
+        end.to_not change(Topic, :count)
       end
         
       it "ログインしているユーザーはTopicを作成できること" do
         sign_in_as user
         expect do
-          fill_in 'topic', with: 'なんでも'
+          fill_in 'title', with: 'なんでも'
           click_button '作成'
           expect(page).to have_content 'スレッドを作成しました'
-        end.to change(topic, :count).by(1)
+        end.to change(Topic, :count).by(1)
       end
-      
-      it "Topicが作成順に並ぶこと" do
-        topic
-        other_topic
-        expect(other_topic).to eq other_topic.first
-      end
+    
     end
   end
   

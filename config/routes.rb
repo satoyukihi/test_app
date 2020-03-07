@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+  
 
   get  '/signup',    to: 'users#new'
   post '/signup',    to: 'users#create'
@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :topics, only: [:create, :show, :destroy]
 
  root 'static_pages#home'
+ 
 end
