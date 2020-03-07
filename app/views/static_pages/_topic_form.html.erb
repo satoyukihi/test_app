@@ -2,13 +2,11 @@
     <%= form_with model:topic, local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <div class = 'form-group'>
+    <div class = 'topic_form'>
       <%= f.text_field :title,\
       class: 'form-control' ,size: "50", id:'title',\
       placeholder: "スレッドを作成するにはタイトルを入力してください"%>
     </div>
-    <div class="form-group">
       <%= f.submit "作成", class: "btn btn-primary" %>
     <% end %>
-  </div>
   </div>

@@ -6,12 +6,11 @@
   <div class="home-info">
     <P>好きな事をみんなで話そう</P>
     <% if logged_in? %>
-      <p>スレッドを立てたり、コメントしたりしよう</p>
-      
     <% else %>   
     <p>スレッド立てる、コメントするには<br>
     <%= link_to "新規ユーザー登録", signup_path %> or
-    <%= link_to "ログイン", login_path %></p>
+    <%= link_to "ログイン", login_path %>
+    してください</p>
     <% end %>
   </div>
   
