@@ -21,11 +21,11 @@
       
     <% else %>
       <li class="nav-item">
-        <%= link_to "ログイン", "login",id: "nav", class: "nav-link fas fa-sign-in-alt" %>
+        <%= link_to "ログイン", login_path,id: "nav", class: "nav-link fas fa-sign-in-alt" %>
         
       </li>
       <li class="nav-item">
-        <%= link_to "新規ユーザー登録", "signup", class: "nav-link fas fa-user-plus" %>
+        <%= link_to "新規ユーザー登録", signup_path, class: "nav-link fas fa-user-plus" %>
         
       </li>
     <% end %>

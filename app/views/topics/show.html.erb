@@ -20,11 +20,11 @@
         </p>
         <% if current_user?(comment.user)%>
         
-        <%= link_to '削除', topic_comment_path(@topic, comment), class: 'commentdelete', method: :delete %>
+        <%= link_to '削除', topic_comment_path(@topic, comment), id: "commentdelete", class: 'commentdelete', method: :delete %>
       <% end %>
      </div>   
     <% end %>
-  
+  <%= paginate @comments %>
   
   <%= form_with model: [@topic, @comment], local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>

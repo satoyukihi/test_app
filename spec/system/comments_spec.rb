@@ -70,12 +70,13 @@ RSpec.describe 'Comments', type: :system do
       expect(page).to_not have_content '削除'
     end
 
-    # it '有効なユーザーはコメントを削除できること' do
-    # sign_in_as comment.user
-    # expect do
-    # click_link 'commentdelete'
-    # end.to change(Topic, :count).by(-1)
-    # end
+     it '有効なユーザーはコメントを削除できること' do
+     sign_in_as comment.user
+     visit "/topics/#{comment.topic.id}"
+     expect do
+     click_link 'commentdelete'
+     end.to change(Comment, :count).by(-1)
+     end
   end
 
   it 'ユーザーを削除すると関連するコメントも削除される'

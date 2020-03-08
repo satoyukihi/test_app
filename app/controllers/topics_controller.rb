@@ -16,7 +16,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @comment = Comment.new(topic_id: @topic.id)
-    @comments = Comment.where(topic_id: @topic.id)
+    @comment_page = Comment.where(topic_id: @topic.id)
+    @comments = @comment_page.page(params[:page]).per(20)
   end
 
   def destroy
