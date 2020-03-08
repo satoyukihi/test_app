@@ -8,10 +8,10 @@
 スレット以外の話はしないでください</p>
 
 
-  <% @comments.each do |comment| %>
+  <% @comments.each_with_index do |comment, i| %>
   <div class="commentbox">
         <p class="commentname">
-        <%= comment.id %>.  
+        <%= i+1 %>.  
         投稿者: <%= comment.user.name %>
         投稿時間: <%= comment.created_at.to_s(:published_on) %>
         </p>
