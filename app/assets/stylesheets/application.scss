@@ -38,7 +38,9 @@
   text-align: center;
   padding-bottom: 30px;
 }
-.topicform{
+
+.row{
+  padding-left: 17px;
   padding-bottom: 10px;
 }
 
@@ -58,6 +60,17 @@
   display: inline-block;
   width: auto;
 }
+
+.title_search{
+  display: inline-block;
+  width: auto;
+  margin-right: 0px;
+}
+.title_search_btn{
+  padding: 6px;
+  margin-bottom: 2px;
+}
+
 /*新規登録ページ*/
 .signuptitle{
   text-align: center;

@@ -1,6 +1,6 @@
 class Topic < ApplicationRecord
   belongs_to :user
-  has_many   :comments
+  has_many   :comments, dependent: :destroy
   has_many   :tag_relationships, dependent: :destroy
   has_many   :tags, through: :tag_relationships
   default_scope -> { order(created_at: :desc) }
@@ -21,5 +21,10 @@ class Topic < ApplicationRecord
       topic_tag = Tag.find_or_create_by(name: new_name)
       tags << topic_tag
     end
+  end
+
+  def self.search(search)
+    Topic.includes(:comments).where(['comments.content LIKE ? OR topics.title LIKE ?',
+                                     "%#{search}%", "%#{search}%"]).references(:comments)
   end
 end

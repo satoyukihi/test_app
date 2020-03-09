@@ -15,7 +15,10 @@
     <% end %>
   </div>
   
-  <%= render partial: 'static_pages/tag_serch' %>
+  <div class="search" style="display:inline-flex">
+    <%= render partial: 'static_pages/tag_search' %>
+    <%= render partial: 'static_pages/title_search' %>
+  </div>
   
   <%= paginate @topics %>
   
@@ -24,4 +27,3 @@
   <%= paginate @topics %>
   
   <%= render partial: 'static_pages/topic_form',  locals: { topic: @topic } %>
-  </div>

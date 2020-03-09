@@ -77,7 +77,7 @@ RSpec.describe 'Topics', type: :system do
     end
   end
 
-  it 'ユーザーを削除すると関連するマイクロポストも削除される'
+  it 'トピックを削除すると関連するコメントも削除される'
   it 'トピックを削除するとタグの関連づけが削除されること'
 
   describe 'showページ' do

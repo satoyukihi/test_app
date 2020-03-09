@@ -14,7 +14,7 @@
         <td><%= link_to "#{topic.title}""(#{topic.comments.count})",topic %></td>
         
         <td><% topic.tags.each do |tag| %>
-            <span class="badge badge-primary"><%= tag.name %></span>
+            <span class="badge badge-success"><%= tag.name %></span>
         <% end %></td>
         
         <td><%= topic.user.name %></td>

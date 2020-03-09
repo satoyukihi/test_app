@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @topic = @comment.topic_id
     if current_user.id == @comment.user_id
       @comment.destroy
-      flash[:success] = 'トピックを削除しました'
+      flash[:success] = 'コメントを削除しました'
     end
     redirect_to @comment.topic
   end

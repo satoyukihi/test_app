@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TagRelationship, type: :model do
+  let(:topic) { FactoryBot.create(:topic) }
   let(:tag_relationship) { FactoryBot.create(:tag_relationship) }
   context 'カラムのバリテーション' do
     before do
