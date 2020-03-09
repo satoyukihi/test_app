@@ -2,12 +2,15 @@ ja:
   activerecord:
     models:
       user: ユーザー
-      topics: トピック
+      topic: トピック
+      comment: コメント
     attributes:
       user:
        name: ニックネーム
        email: メールアドレス
        password: パスワード
        password_confirmation: パスワード(確認)
-    topic: 
+      topic: 
        title: タイトル
+      comment: 
+       content: コメント

@@ -1,24 +1,25 @@
-# README
+## アプリケーションの概要
+5チャンネルのような掲示板サイト
+スレッド、コメントの閲覧は誰でも可能です。
+スレッドを立てたり、コメントするにはログインが必要です。
+https://www.my-gohan.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーションの機能
+・ログイン機能（email,パスワード） 
+・スレッド作成、コメント機能  
+・カテゴリー設定、カテゴリー検索機能
+・スレッド、コメント検索（横断検索）
+・ページネーション機能（kaminari使用）  
+・新規ユーザー登録  
+・モデルに対するバリデーション  
 
-Things you may want to cover:
+## その他
+・rspecを使用しテスト駆動開発
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 環境
+■フレームワーク  
+　Ruby on Rails  
+■インフラ  
+　HEROKU  
+■データベース  
+　 Mysql 
