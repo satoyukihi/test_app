@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'コメントしました'
       redirect_to @comment.topic
     else
-      @comments = Comment.where(topic_id: @topic.id)
+      @comment_page = Comment.where(topic_id: @topic.id)
+      @comments = @comment_page.page(params[:page]).per(50)
       render template: 'topics/show'
     end
   end

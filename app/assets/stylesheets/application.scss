@@ -22,20 +22,31 @@
   }
 }
 
-.container{
+/*.container{
   width: 60%;
-  /*左も右も20%ずつ*/
   margin: 30px 20%;
   padding: 15px;
-}
+}*/
 
 /*TOPページ*/
-.home-info{
+
+.home-title{
   text-align: center;
 }
 
+.home-info{
+  text-align: center;
+}
+.topicform{
+  padding-bottom: 10px;
+}
+
 .topic_form{
-  float: left;
+  padding-bottom: 20px;
+}
+
+.article-tags-field{
+  padding-bottom: 20px;
 }
 /*新規登録ページ*/
 .signuptitle{

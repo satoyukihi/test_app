@@ -1,8 +1,8 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th>ID</th>
       <th>タイトル</th>
+      <th>タグ</th>
       <th>作成者</th>
       <th>作成日時</th>
       <th></th>
@@ -11,12 +11,16 @@
   <tbody>
     <% topics.each do |topic| %>
       <tr>
-        <td><%= topic.id %></td>
         <td><%= link_to "#{topic.title}""(#{topic.comments.count})",topic %></td>
+        
+        <td><% topic.tags.each do |tag| %>
+            <span class="badge badge-primary"><%= tag.name %></span>
+        <% end %></td>
+        
         <td><%= topic.user.name %></td>
         <td><%= topic.created_at.to_s(:published_on) %></td>
         <% if current_user?(topic.user)%>
-        <td><%= link_to '削除', topic, class: 'btn btn-outline-dark', method: :delete %></td>
+        <td><%= link_to '削除', topic, class: 'btn btn-outline-dark btn-sm', method: :delete %></td>
         <%end%>
       </tr>
     <% end %>
