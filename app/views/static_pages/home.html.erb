@@ -15,7 +15,15 @@
     <% end %>
   </div>
   
-  <%= render partial: 'static_pages/topic_form',  locals: { topic: @topic } %>
+  <%= form_with url: root_path, method: :get, class: 'topicss_searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み',
+                       class: 'form-control topicss_select',
+                       onchange: 'submit(this.form);'
+                     }%>
+                     <% end %>
   
   <%= paginate @topics %>
   
@@ -23,5 +31,5 @@
   
   <%= paginate @topics %>
   
-  
+  <%= render partial: 'static_pages/topic_form',  locals: { topic: @topic } %>
   </div>

@@ -36,6 +36,7 @@
 
 .home-info{
   text-align: center;
+  padding-bottom: 30px;
 }
 .topicform{
   padding-bottom: 10px;
@@ -47,6 +48,15 @@
 
 .article-tags-field{
   padding-bottom: 20px;
+}
+
+.topics_searchForm {
+  display: inline-block;
+}
+
+.topicss_select {
+  display: inline-block;
+  width: auto;
 }
 /*新規登録ページ*/
 .signuptitle{
