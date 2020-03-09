@@ -37,12 +37,12 @@ RSpec.describe 'Topics', type: :system do
           expect(page).to have_content 'スレッドを作成しました'
         end.to change(Topic, :count).by(1)
       end
-      
+
       it 'ログインしているユーザーはTopicを作成・タグつけできること' do
         sign_in_as user
         expect do
           fill_in 'title', with: 'なんでも'
-          fill_in 'tag_list', with: "tag1,tag2"
+          fill_in 'tag_list', with: 'tag1,tag2'
           click_button '作成'
           expect(page).to have_content 'スレッドを作成しました'
         end.to change(Tag, :count).by(2)

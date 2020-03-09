@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    tag_list = params[:topic][:tag_list].split(",")
+    tag_list = params[:topic][:tag_list].split(',')
     if @topic.save
       @topic.save_tags(tag_list)
       flash[:success] = 'スレッドを作成しました!'
@@ -31,6 +31,6 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, tag_list:[])
+    params.require(:topic).permit(:title, tag_list: [])
   end
 end
