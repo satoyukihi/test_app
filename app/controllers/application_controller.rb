@@ -10,8 +10,13 @@ class ApplicationController < ActionController::Base
     redirect_to login_url
   end
 
-  def correct_user
+  def correct_user_topic
     @topic = current_user.topics.find_by(id: params[:id])
     redirect_to root_url if @topic.nil?
+  end
+  
+  def correct_user_comment
+    @comment = current_user.comments.find_by(id: params[:id])
+    redirect_to root_url if @comment.nil?
   end
 end

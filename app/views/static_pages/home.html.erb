@@ -25,5 +25,6 @@
   <%= render partial: 'static_pages/topic', locals: { topics: @topics } %>
   
   <%= paginate @topics %>
-  
+  <% if logged_in? %>
   <%= render partial: 'static_pages/topic_form',  locals: { topic: @topic } %>
+  <% end %>

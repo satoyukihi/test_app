@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: :create
+  before_action :correct_user_comment,   only: :destroy
 
   def create
     @topic = Topic.find(params[:topic_id])

@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :logged_in_user, only: :create
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user_topic,   only: :destroy
 
   def create
     @topic = current_user.topics.build(topic_params)
