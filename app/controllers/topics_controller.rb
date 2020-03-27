@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @comment = Comment.new(topic_id: @topic.id)
-    @comment_page = Comment.where(topic_id: @topic.id)
+    @comment_page = Comment.where(topic_id: @topic.id).includes(:user)
     @comments = @comment_page.page(params[:page]).per(50)
   end
 

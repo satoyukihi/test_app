@@ -6,9 +6,9 @@ class StaticPagesController < ApplicationController
     @topics = if params[:tag_id].present?
                 Tag.find(params[:tag_id]).topics
               elsif params[:search].present?
-                Topic.search(params[:search])
+                Topic.search(params[:search]).includes(:tags, :user)
               else
-                Topic.all
+                Topic.all.includes(:tags, :user)
               end
 
     # @topics = params[:tag_id].present? ? Tag.find(params[:tag_id]).topics : Topic.all

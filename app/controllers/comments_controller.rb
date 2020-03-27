@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       flash[:success] = 'コメントしました'
       redirect_to @comment.topic
     else
-      @comment_page = Comment.where(topic_id: @topic.id)
+      @comment_page = Comment.where(topic_id: @topic.id).includes(:user)
       @comments = @comment_page.page(params[:page]).per(50)
       render template: 'topics/show'
     end
@@ -18,8 +18,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-      @comment.destroy
-      flash[:success] = 'コメントを削除しました'
+    @comment.destroy
+    flash[:success] = 'コメントを削除しました'
     redirect_to @comment.topic
   end
 

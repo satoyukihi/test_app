@@ -6,6 +6,7 @@ RSpec.describe 'Users', type: :system do
       before do
         visit signup_path
       end
+      
       it 'ユーザー登録の文字列が存在すること' do
         expect(page).to have_content 'ユーザー登録'
       end
@@ -14,6 +15,7 @@ RSpec.describe 'Users', type: :system do
         expect(page).to have_title 'なんでも掲示板-signup'
       end
     end
+    
     context 'ユーザー登録処理' do
       before do
         visit signup_path
