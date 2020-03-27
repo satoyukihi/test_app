@@ -9,15 +9,10 @@ class Topic < ApplicationRecord
                     uniqueness: true
 
   def save_tags(savetopic_tags)
-    current_tags = tags.pluck(:name) unless tags.nil?
-    old_tags = current_tags - savetopic_tags
-    new_tags = savetopic_tags - current_tags
+    
+   
 
-    old_tags.each do |old_name|
-      tags.delete Tag.find_by(name: old_name)
-    end
-
-    new_tags.each do |new_name|
+    savetopic_tags.each do |new_name|
       topic_tag = Tag.find_or_create_by(name: new_name)
       if topic_tag.valid?
         tags << topic_tag

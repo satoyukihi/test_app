@@ -4,17 +4,11 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.build(topic_params)
-    @tag_list = params[:topic][:tag_list].split(',')
+    tag_list = params[:topic][:tag_list].split(',')
     if @topic.save
-      if @topic.save_tags(@tag_list)
-        flash[:success] = 'スレッドを作成しました!'
-        redirect_to root_url
-      else
-        @tag_list = params[:topic][:tag_list].split(',')
-        @topics = Topic.page(params[:page]).per(20)
-        flash.now[:danger] = '空白のタグが含まれています'
-        render 'static_pages/home'
-      end
+      @topic.save_tags(tag_list)
+      flash[:success] = 'スレッドを作成しました!'
+      redirect_to root_url
     else
       @topics = Topic.page(params[:page]).per(20)
       render 'static_pages/home'
