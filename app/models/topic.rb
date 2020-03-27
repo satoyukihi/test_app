@@ -19,7 +19,11 @@ class Topic < ApplicationRecord
 
     new_tags.each do |new_name|
       topic_tag = Tag.find_or_create_by(name: new_name)
-      tags << topic_tag
+      if topic_tag.valid?
+        tags << topic_tag
+      else
+        return false
+      end
     end
   end
 
