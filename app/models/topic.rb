@@ -23,7 +23,7 @@ class Topic < ApplicationRecord
   end
 
   def self.search(search)
-    Topic.includes(:comments).where(['comments.content LIKE ? OR topics.title LIKE ?',
-                                     "%#{search}%", "%#{search}%"]).references(:comments)
+    Topic.eager_load(:comments).where(['comments.content LIKE ? OR topics.title LIKE ?',
+                                     "%#{search}%", "%#{search}%"])
   end
 end
