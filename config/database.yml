@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: test_default
-  username: <%=ENV['C9_USER']%>
-  host: <%=ENV['IP']%>
+  username: yuki
+  password: password
 
 development:
   <<: *default
-  database: test_development
+  host: db
+  database: docker_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
