@@ -9,8 +9,6 @@ services:
     depends_on:
       - test-db
       - selenium_chrome
-    ports:
-      - "3001:3000"
     volumes:
       - ..:/myproject/myapp:cached # ソースコード変更したらDocker側も即反映されるように
 
@@ -22,12 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: yuki
       MYSQL_PASSWORD: password
-    ports:
-      - "3307:3306"
 
   selenium_chrome:
     image: selenium/standalone-chrome-debug
-    ports:
-      - "4444:4444"
     logging:
       driver: none
