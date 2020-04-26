@@ -1,4 +1,4 @@
-version: '3'
+circleciversion: '3'
 services:
   web:
     build:
