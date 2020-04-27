@@ -10,7 +10,7 @@ services:
       - test-db
       - selenium_chrome
     volumes:
-      - ..:/myproject/myapp:cached # ソースコード変更したらDocker側も即反映されるように
+      - ..:/myproject/myapp:cached 
 
   test-db:
     image: mysql:5.7
