@@ -1,26 +1,53 @@
 version: 2
 jobs:
   build:
-    # docker-composeがインストール済みの仮想マシンをプル
-    machine:
-      image: circleci/classic:edge
+    working_directory: ~/test-circleci
+    docker:
+      - image: circleci/ruby:2.6.3-node-browsers
+        environment:
+        # デフォルトはBUNDLE_PATH=/usr/local/bundleで設定。上書きが必要
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+      - image: circleci/mysql:5.7-ram
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USER: yuki
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: docker_test
     steps:
+        #gitリポジトリのコピー
       - checkout
+      - restore_cache:
+         keys:
+          - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          - rails-demo-bundle-v2-
+  
       - run:
-          name: Dockerコンテナのビルド
-          command: docker-compose -f dockertest/docker-compose.test.yml build
+          name: バンドルインストール
+          command: bundle check || bundle install
+  
+    # バンドルキャッシュを保存します
+  
+      - save_cache:
+         key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+         paths:
+          - vendor/bundle
       - run:
-          name: Dockerコンテナの起動
-          command: docker-compose -f dockertest/docker-compose.test.yml up -d
+          name: Wait for DB
+          # circleci/* の Docker イメージにプリインストール
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
       - run:
-          name: db接続を待機
-          command: sleep 10
+         name: DBをセットアップ
+         command: bin/rails db:schema:load --trace
       - run:
-          name: データベースのセットアップ
-          command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec rails db:migrate RAILS_ENV=test
-      - run:
-          name: RSpecテスト実行
-          command: docker-compose -f dockertest/docker-compose.test.yml exec web bundle exec bin/rspec
-      - run:
-          name: Dockerコンテナの停止
-          command: docker-compose -f dockertest/docker-compose.test.yml down
+         name: RSpec を並列実行
+         command: |
+            bundle exec rspec 
+      # タイミング解析のテスト結果を保存します
+
+      - store_test_results: 
+         path: test_results
+      
